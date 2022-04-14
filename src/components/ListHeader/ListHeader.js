@@ -1,11 +1,8 @@
-import { Wrapper, Box } from "./Header.styles";
+import { Wrapper, Box } from "./ListHeader.styles";
 
-export const Header = (props) => {
-  const { setFilter } = props;
-
+export const ListHeader = () => {
   return (
     <>
-      <h1>Blog</h1>
       <form>
         <input
           onChange={handleChange}
