@@ -1,9 +1,11 @@
 import { Visibility } from "../Visibility/Visibility";
+import { Console } from "../Console/Console";
 import { StyledLi, Wrapper, FlexBox } from "./Comment.styles";
 
 export const Comment = (props) => {
   const { isVisible, handleClick, addCheckbox } = Visibility();
   const { item } = props;
+  const { addToConsole } = Console(item);
 
   return (
     <>
@@ -18,7 +20,7 @@ export const Comment = (props) => {
           </StyledLi>
           <FlexBox>
             <button onClick={handleClick}>Usuń</button>
-            <button>Zaloguj</button>
+            <button onClick={addToConsole}>Zaloguj</button>
           </FlexBox>
         </Wrapper>
       ) : null}
