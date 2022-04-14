@@ -1,42 +1,19 @@
-import { useState } from "react";
+import { Filter } from "../Filter/Filter";
 import { GetData } from "../GetData/GetData";
 import { Comment } from "../Atoms/Comment";
-import { Wrapper, Box } from "../ListHeader/ListHeader.styles";
+import { ListHeader } from "../ListHeader/ListHeader";
+import { Visibility } from "../Visibility/Visibility";
 
 export const CommentsList = () => {
   const API = "https://jsonplaceholder.typicode.com/comments";
 
   const { data } = GetData(API);
-
-  const [filter, setFilter] = useState([]);
-  const handleChange = (e) => {
-    e.preventDefault();
-    setFilter(e.target.value);
-  };
+  const { filter, handleChange } = Filter();
+  const { handleVisiblity } = Visibility();
 
   return (
     <>
-      <form>
-        <input
-          onChange={handleChange}
-          type="search"
-          name="search"
-          id="search"
-          autoComplete="off"
-          placeholder="Search for Pokemon"
-        />
-      </form>
-      <button>Usuń zaznaczone</button>
-      <Wrapper>
-        <p>Checkbox</p>
-        <Box>
-          <p>Id</p>
-          <p>Name</p>
-          <p>Mail</p>
-          <p>Body</p>
-        </Box>
-        <p>Action</p>
-      </Wrapper>
+      <ListHeader onChange={handleChange} onClick={handleVisiblity} />
       {data.map(
         (item) =>
           (item.name.includes(filter) ||

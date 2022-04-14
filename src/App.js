@@ -6,7 +6,6 @@ function App() {
   return (
     <Wrapper>
       <GlobalStyles />
-      <h1>Blog</h1>
       <CommentsList />
     </Wrapper>
   );
