@@ -1,24 +1,22 @@
-import { Filter } from "../Filter/Filter";
-import { GetData } from "../GetData/GetData";
+import { useFilter } from "../Filter/useFilter";
+import { useGetData } from "../GetData/useGetData";
 import { Comment } from "../Atoms/Comment";
 import { ListHeader } from "../ListHeader/ListHeader";
-import { Visibility } from "../Visibility/Visibility";
 
 export const CommentsList = () => {
   const API = "https://jsonplaceholder.typicode.com/comments";
 
-  const { data } = GetData(API);
-  const { filter, handleChange } = Filter();
-  const { handleVisiblity } = Visibility();
+  const { data } = useGetData(API);
+  const { filter, handleChange } = useFilter();
 
   return (
     <>
-      <ListHeader onChange={handleChange} onClick={handleVisiblity} />
+      <ListHeader onChange={handleChange} />
       {data.map(
-        (item) =>
+        (item, index) =>
           (item.name.includes(filter) ||
             item.email.includes(filter) ||
-            item.body.includes(filter)) && <Comment key={item.id} item={item} />
+            item.body.includes(filter)) && <Comment key={index} item={item} />
       )}
     </>
   );

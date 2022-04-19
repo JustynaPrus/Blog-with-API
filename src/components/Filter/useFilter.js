@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Filter = () => {
+export const useFilter = () => {
   const [filter, setFilter] = useState([]);
 
   const handleChange = (e) => {

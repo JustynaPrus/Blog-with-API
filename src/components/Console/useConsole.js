@@ -1,4 +1,4 @@
-export const Console = (item) => {
+export const useConsole = (item) => {
   const addToConsole = () => {
     console.log(item);
   };
