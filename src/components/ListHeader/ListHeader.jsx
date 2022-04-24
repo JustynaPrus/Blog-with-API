@@ -1,13 +1,13 @@
 import { Wrapper, Box, FlexBox } from "./ListHeader.styles";
 
-export const ListHeader = (props) => {
+export const ListHeader = ({ handleDelete, handleChange }) => {
   return (
     <>
       <h1>Blog</h1>
       <FlexBox>
         <form>
           <input
-            {...props}
+            onChange={handleChange}
             type="search"
             name="search"
             id="search"
@@ -15,7 +15,7 @@ export const ListHeader = (props) => {
             placeholder="Search"
           />
         </form>
-        <button {...props}>Usuń zaznaczone</button>
+        <button onClick={handleDelete}>Usuń zaznaczone</button>
       </FlexBox>
       <Wrapper>
         <p>Checkbox</p>

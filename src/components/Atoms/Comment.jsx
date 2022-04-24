@@ -1,11 +1,16 @@
-import { useVisibility } from "../Visibility/useVisibility";
 import { useConsole } from "../Console/useConsole";
 import { StyledLi, Wrapper, FlexBox } from "./Comment.styles";
+import { useState } from "react";
 
 export const Comment = (props) => {
-  const { item, index } = props;
-  const { isVisible, isChecked, handleClick, addCheckbox } = useVisibility();
+  const { item, isChecked, handleAddToCheckedItems } = props;
+
   const { addToConsole } = useConsole(item);
+
+  const [isVisible, setIsVisible] = useState(true);
+  const handleClick = () => {
+    setIsVisible(!isVisible);
+  };
 
   return (
     <>
@@ -13,11 +18,10 @@ export const Comment = (props) => {
         <Wrapper>
           <input
             type="checkbox"
-            index={index}
             name={item.name}
-            checked={isChecked[item.index]}
+            checked={isChecked}
             id={item.id}
-            onChange={() => addCheckbox(item.id)}
+            onChange={() => handleAddToCheckedItems(item.id)}
           />
           <StyledLi key={item.id}>
             <p>{item.id}.</p>

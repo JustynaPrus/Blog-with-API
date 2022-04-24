@@ -1,36 +1,28 @@
-import { useState } from "react";
-import { useGetData } from "../GetData/useGetData";
+import { useState, useCallback } from "react";
 
 export const useVisibility = () => {
-  const { data } = useGetData();
+  const [isChecked, setIsChecked] = useState([]);
+  const [deletedItems, setDeletedItems] = useState([]);
 
-  const [isVisible, setIsVisible] = useState(true);
-  const [isChecked, setIsChecked] = useState(
-    new Array(data.length).fill(false)
+  const checkIsChecked = useCallback(
+    (id) => isChecked.includes(id),
+    [isChecked]
   );
-  const [selected, setSelected] = useState([]);
 
-  const handleClick = () => {
-    setIsVisible(!isVisible);
+  const addCheckbox = (id) => {
+    setIsChecked((prev) => [...prev, id]);
   };
-  console.log(data);
 
-  const addCheckbox = (id, position) => {
-    const updatedCheckedState = isChecked.map((item, index) =>
-      index === position ? !item : item
-    );
-    setIsChecked(updatedCheckedState);
-    console.log(position);
-    console.log(id);
-    setSelected((selected) => [...selected, id]);
-    console.log(selected);
+  const handleDelete = () => {
+    setDeletedItems(isChecked);
+    setIsChecked([]);
   };
 
   return {
     isChecked,
-    isVisible,
-    selected,
-    handleClick,
+    deletedItems,
     addCheckbox,
+    checkIsChecked,
+    handleDelete,
   };
 };

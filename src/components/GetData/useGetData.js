@@ -14,5 +14,5 @@ export const useGetData = (url) => {
       .finally(() => setLoading(false));
   }, [url]);
 
-  return { data, isLoading, isError };
+  return { data, isLoading, isError, setData };
 };
