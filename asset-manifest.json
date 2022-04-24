@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/Blog-with-API/static/js/main.5ab5982a.js",
+    "main.js": "/Blog-with-API/static/js/main.bb807a81.js",
     "index.html": "/Blog-with-API/index.html",
-    "main.5ab5982a.js.map": "/Blog-with-API/static/js/main.5ab5982a.js.map"
+    "main.bb807a81.js.map": "/Blog-with-API/static/js/main.bb807a81.js.map"
   },
   "entrypoints": [
-    "static/js/main.5ab5982a.js"
+    "static/js/main.bb807a81.js"
   ]
 }
